@@ -1,5 +1,10 @@
 import SwiftUI
 
 final class AppRouter: ObservableObject {
-    @Published var path = NavigationPath()
+    @Published var path = [NavigationDestination]()
+}
+
+enum NavigationDestination: Hashable {
+    case selectTimerView
+    case timerView
 }

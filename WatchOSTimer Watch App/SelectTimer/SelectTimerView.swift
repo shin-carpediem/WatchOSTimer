@@ -1,21 +1,16 @@
 import SwiftUI
 
-enum NavigationDestination: Hashable {
-    case timerView
-}
-
 struct SelectTimerView: View {
     @EnvironmentObject private var router: AppRouter
 
-    @State private var observable = Observable()
+    @State var observable = Observable()
     
     @Observable final class Observable {
-        var viewPath = [NavigationDestination]()
         var selectedSec = 3
     }
     
     var body: some View {
-        NavigationStack(path: $observable.viewPath) {
+        NavigationStack(path: $router.path) {
             VStack {
                 titleLabel
                 picker
@@ -28,8 +23,7 @@ struct SelectTimerView: View {
     }
     
     private var titleLabel: some View {
-        Text("Timer \(observable.selectedSec) seconds")
-            .font(.body)
+        Text("Timer \(observable.selectedSec) seconds").font(.body)
     }
     
     private var picker: some View {
@@ -48,11 +42,16 @@ struct SelectTimerView: View {
     }
 }
 
-private extension SelectTimerView {
-    func designatedRoute(_ destination: NavigationDestination) -> some View {
+extension SelectTimerView {
+    private func designatedRoute(_ destination: NavigationDestination) -> some View {
         switch destination {
+        case .selectTimerView:
+            fatalError()
+            
         case .timerView:
-            TimerView(selectedSec: observable.selectedSec)
+            let view = TimerView()
+            view.observable.selectedSec = observable.selectedSec
+            return view
         }
     }
 }
