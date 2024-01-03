@@ -1,6 +1,6 @@
 import SwiftUI
 
-private enum NavigationDestination: Hashable {
+enum NavigationDestination: Hashable {
     case timerView
 }
 
@@ -9,7 +9,7 @@ struct SelectTimerView: View {
 
     @State private var observable = Observable()
     
-    @Observable fileprivate final class Observable {
+    @Observable final class Observable {
         var viewPath = [NavigationDestination]()
         var selectedSec = 3
     }
@@ -26,24 +26,13 @@ struct SelectTimerView: View {
             }
         }
     }
-}
-
-private extension SelectTimerView {
-    func designatedRoute(_ destination: NavigationDestination) -> some View {
-        switch destination {
-        case .timerView:
-            TimerView(selectedSec: observable.selectedSec)
-        }
-    }
-}
-
-private extension SelectTimerView {
-    var titleLabel: some View {
+    
+    private var titleLabel: some View {
         Text("Timer \(observable.selectedSec) seconds")
             .font(.body)
     }
     
-    var picker: some View {
+    private var picker: some View {
         let secList = [3, 5, 10, 30, 60]
         return Picker(selection: $observable.selectedSec) {
             ForEach(secList, id: \.self) { sec in
@@ -52,9 +41,18 @@ private extension SelectTimerView {
         } label: { Text("") }
     }
     
-    var startTimerButton: some View {
+    private var startTimerButton: some View {
         NavigationLink(value: NavigationDestination.timerView) {
-            Text("Set")
+            Label("Start", systemImage: "timer")
+        }
+    }
+}
+
+private extension SelectTimerView {
+    func designatedRoute(_ destination: NavigationDestination) -> some View {
+        switch destination {
+        case .timerView:
+            TimerView(selectedSec: observable.selectedSec)
         }
     }
 }
