@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3633DA962B45410C00C112FA /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633DA952B45410C00C112FA /* AppRouter.swift */; };
 		368E707F2B444AA700E402B6 /* WatchOSTimer Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 368E707E2B444AA700E402B6 /* WatchOSTimer Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		368E70842B444AA700E402B6 /* WatchOSTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368E70832B444AA700E402B6 /* WatchOSTimerApp.swift */; };
-		368E70862B444AA700E402B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368E70852B444AA700E402B6 /* ContentView.swift */; };
+		368E70862B444AA700E402B6 /* SelectTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368E70852B444AA700E402B6 /* SelectTimerView.swift */; };
 		368E70882B444AA800E402B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 368E70872B444AA800E402B6 /* Assets.xcassets */; };
 		368E708B2B444AA800E402B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 368E708A2B444AA800E402B6 /* Preview Assets.xcassets */; };
 		368E70952B444AA800E402B6 /* WatchOSTimer_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368E70942B444AA800E402B6 /* WatchOSTimer_Watch_AppTests.swift */; };
@@ -57,10 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3633DA952B45410C00C112FA /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		368E70782B444AA700E402B6 /* WatchOSTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchOSTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		368E707E2B444AA700E402B6 /* WatchOSTimer Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchOSTimer Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		368E70832B444AA700E402B6 /* WatchOSTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOSTimerApp.swift; sourceTree = "<group>"; };
-		368E70852B444AA700E402B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		368E70852B444AA700E402B6 /* SelectTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimerView.swift; sourceTree = "<group>"; };
 		368E70872B444AA800E402B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		368E708A2B444AA800E402B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		368E70902B444AA800E402B6 /* WatchOSTimer Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchOSTimer Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +98,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3633DA932B450C0900C112FA /* SelectTimer */ = {
+			isa = PBXGroup;
+			children = (
+				368E70852B444AA700E402B6 /* SelectTimerView.swift */,
+			);
+			path = SelectTimer;
+			sourceTree = "<group>";
+		};
+		3633DA942B450C4200C112FA /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				368E70B12B444C0100E402B6 /* TimerView.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		368E70712B444AA700E402B6 = {
 			isa = PBXGroup;
 			children = (
@@ -120,9 +138,10 @@
 		368E70822B444AA700E402B6 /* WatchOSTimer Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				3633DA932B450C0900C112FA /* SelectTimer */,
+				3633DA942B450C4200C112FA /* Timer */,
 				368E70832B444AA700E402B6 /* WatchOSTimerApp.swift */,
-				368E70852B444AA700E402B6 /* ContentView.swift */,
-				368E70B12B444C0100E402B6 /* TimerView.swift */,
+				3633DA952B45410C00C112FA /* AppRouter.swift */,
 				368E70872B444AA800E402B6 /* Assets.xcassets */,
 				368E70892B444AA800E402B6 /* Preview Content */,
 			);
@@ -312,8 +331,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3633DA962B45410C00C112FA /* AppRouter.swift in Sources */,
 				368E70B22B444C0100E402B6 /* TimerView.swift in Sources */,
-				368E70862B444AA700E402B6 /* ContentView.swift in Sources */,
+				368E70862B444AA700E402B6 /* SelectTimerView.swift in Sources */,
 				368E70842B444AA700E402B6 /* WatchOSTimerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
