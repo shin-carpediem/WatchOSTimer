@@ -18,18 +18,11 @@ final class TimerModel: TimerModelProtocol {
     }
     
     func viewDidAppear() {
-        Timer.scheduledTimer(withTimeInterval: 1.0,
-                             repeats: true) { [weak self] _ in
-            guard let self else { return }
-            if observable.selectedSec >= resetTime {
-                observable.selectedSec -= 1
-            }
-            observable.showTimerFinishButton = observable.selectedSec <= resetTime
-        }
+        startTimer()
     }
     
     func viewDidDisAppear() {
-        Timer.cancelPreviousPerformRequests(withTarget: self)
+        timer?.invalidate()
     }
     
     func didTimerFinishedButtonShown() {
@@ -38,5 +31,19 @@ final class TimerModel: TimerModelProtocol {
     
     // MARK: - Private
     
+    private var timer: Timer?
+    
     private let resetTime = 0
+    
+    private func startTimer() {
+        Timer.scheduledTimer(withTimeInterval: 1.0,
+                             repeats: true) { [weak self] timer in
+            guard let self else { return }
+            self.timer = timer
+            if observable.selectedSec >= resetTime {
+                observable.selectedSec -= 1
+            }
+            observable.showTimerFinishButton = observable.selectedSec <= resetTime
+        }
+    }
 }
