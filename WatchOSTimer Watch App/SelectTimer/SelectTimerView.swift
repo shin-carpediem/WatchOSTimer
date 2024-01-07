@@ -2,12 +2,13 @@ import SwiftUI
 
 struct SelectTimerView: View {
     @EnvironmentObject private var router: AppRouter
-
     @State var observable = Observable()
     
     @Observable final class Observable {
         var selectedSec = 3
     }
+    
+    // MARK: - View
     
     var body: some View {
         NavigationStack(path: $router.path) {
@@ -42,6 +43,8 @@ struct SelectTimerView: View {
     }
 }
 
+// MARK: - Routing
+
 extension SelectTimerView {
     private func designatedRoute(_ destination: NavigationDestination) -> some View {
         switch destination {
@@ -49,12 +52,15 @@ extension SelectTimerView {
             fatalError()
             
         case .timerView:
-            let view = TimerView()
-            view.observable.selectedSec = observable.selectedSec
+            let model = TimerModel()
+            model.observable.selectedSec = observable.selectedSec
+            let view = TimerView(model: model)
             return view
         }
     }
 }
+
+// MARK: - Preview
 
 #Preview {
     SelectTimerView()

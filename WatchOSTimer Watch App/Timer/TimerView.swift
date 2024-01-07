@@ -1,56 +1,53 @@
 import SwiftUI
 
 struct TimerView: View {
-    @EnvironmentObject private var router: AppRouter
-    
-    @State var observable = Observable()
-    
-    @Observable final class Observable {
-        var selectedSec = 3
+    init(model: TimerModelProtocol) {
+        self.model = model
     }
     
-    private let resetTime = 0
+    private let model: any TimerModelProtocol
+    @EnvironmentObject private var router: AppRouter
+    
+    // MARK: - View
     
     var body: some View {
-        if observable.selectedSec >= resetTime {
+        if model.observable.showTimerFinishButton {
+            timerFinishedButton
+                .onAppear(perform: {
+                    model.didTimerFinishedButtonShown()
+                })
+                .onDisappear(perform: {
+                    model.viewDidDisAppear()
+                })
+        } else {
             timerLabel
                 .padding(.top)
-                .onAppear(perform: { countDown() })
-        } else {
-            finishTimerButton
-                .onAppear(perform: { notify() })
+                .onAppear(perform: {
+                    model.viewDidAppear()
+                })
+                .onDisappear(perform: {
+                    model.viewDidDisAppear()
+                })
         }
     }
     
     private var timerLabel: some View {
         VStack {
-            Text("\(observable.selectedSec)").font(.body)
+            Text("\(model.observable.selectedSec)").font(.body)
         }
     }
     
-    private var finishTimerButton: some View {
+    private var timerFinishedButton: some View {
         Button(action: {
             router.path.removeLast()
         }, label: {
-            Text("Finished").font(.title2).foregroundStyle(.cyan)
+            Text("Finished").font(.title3).foregroundStyle(.cyan)
         })
     }
 }
 
-extension TimerView {
-    private func countDown() {
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-            if observable.selectedSec >= resetTime {
-                observable.selectedSec -= 1
-            }
-        }
-    }
-    
-    private func notify() {
-        WKInterfaceDevice.current().play(.notification)
-    }
-}
+// MARK: - Preview
 
 #Preview {
-    TimerView()
+    TimerView(model: TimerModel())
 }
