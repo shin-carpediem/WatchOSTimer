@@ -12,7 +12,7 @@ struct TimerView: View {
     
     var body: some View {
         if model.observable.showTimerFinishButton {
-            timerFinishedButton
+            finishedButton
                 .onAppear(perform: {
                     model.didTimerFinishedButtonShown()
                 })
@@ -20,14 +20,17 @@ struct TimerView: View {
                     model.viewDidDisAppear()
                 })
         } else {
-            timerLabel
-                .padding(.top)
-                .onAppear(perform: {
-                    model.viewDidAppear()
-                })
-                .onDisappear(perform: {
-                    model.viewDidDisAppear()
-                })
+            VStack(spacing: 8) {
+                timerLabel
+                cancelButton
+            }
+            .padding(.top)
+            .onAppear(perform: {
+                model.viewDidAppear()
+            })
+            .onDisappear(perform: {
+                model.viewDidDisAppear()
+            })
         }
     }
     
@@ -37,7 +40,15 @@ struct TimerView: View {
         }
     }
     
-    private var timerFinishedButton: some View {
+    private var cancelButton: some View {
+        Button(action: {
+            router.path.removeLast()
+        }, label: {
+            Text("Cancel").font(.title3).foregroundStyle(Colors.secondary)
+        })
+    }
+    
+    private var finishedButton: some View {
         Button(action: {
             router.path.removeLast()
         }, label: {
