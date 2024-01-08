@@ -1,6 +1,7 @@
 import SwiftUI
 
 protocol TimerModelProtocol: AnyObject {
+    var selectedSec: Int { get }
     var observable: TimerModel.Observable { get }
     func viewDidAppear()
     func viewDidDisAppear()
@@ -8,13 +9,19 @@ protocol TimerModelProtocol: AnyObject {
 }
 
 final class TimerModel: TimerModelProtocol {
+    init(selectedSec: Int) {
+        self.selectedSec = selectedSec
+        self.observable.remainedSec = selectedSec
+    }
+    
     // MARK: - TimerModelProtocol
     
-    @State var observable = Observable()
+    private(set) var selectedSec: Int
+    @State private(set) var observable = Observable()
     
     @Observable final class Observable {
         var showTimerFinishButton = false
-        var selectedSec = 3
+        var remainedSec = 3
     }
     
     func viewDidAppear() {
@@ -30,9 +37,8 @@ final class TimerModel: TimerModelProtocol {
     }
     
     // MARK: - Private
-    
+
     private var timer: Timer?
-    
     private let resetTime = 0
     
     private func startTimer() {
@@ -40,10 +46,10 @@ final class TimerModel: TimerModelProtocol {
                              repeats: true) { [weak self] timer in
             guard let self else { return }
             self.timer = timer
-            if observable.selectedSec >= resetTime {
-                observable.selectedSec -= 1
+            if observable.remainedSec >= resetTime {
+                observable.remainedSec -= 1
             }
-            observable.showTimerFinishButton = observable.selectedSec <= resetTime
+            observable.showTimerFinishButton = observable.remainedSec <= resetTime
         }
     }
 }

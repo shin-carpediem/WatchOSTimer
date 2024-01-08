@@ -20,8 +20,8 @@ struct TimerView: View {
                     model.viewDidDisAppear()
                 })
         } else {
-            VStack(spacing: 8) {
-                timerLabel
+            VStack(spacing: 20) {
+                progressCircleBar
                 cancelButton
             }
             .padding(.top)
@@ -34,9 +34,12 @@ struct TimerView: View {
         }
     }
     
-    private var timerLabel: some View {
-        VStack {
-            Text("\(model.observable.selectedSec)").font(.body)
+    private var progressCircleBar: some View {
+        ZStack {
+            Text("\(model.observable.remainedSec)").font(.title2)
+            
+            ProgressCircleBar(total: model.selectedSec,
+                              progress: model.observable.remainedSec)
         }
     }
     
@@ -60,5 +63,5 @@ struct TimerView: View {
 // MARK: - Preview
 
 #Preview {
-    TimerView(model: TimerModel())
+    TimerView(model: TimerModel(selectedSec: 3))
 }

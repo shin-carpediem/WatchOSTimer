@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SelectTimerView: View {
     @EnvironmentObject private var router: AppRouter
-    @State var observable = Observable()
+    @State private(set) var observable = Observable()
     
     @Observable final class Observable {
         var selectedSec = 3
@@ -52,10 +52,9 @@ extension SelectTimerView {
             fatalError()
             
         case .timerView:
-            let model = TimerModel()
-            model.observable.selectedSec = observable.selectedSec
-            let view = TimerView(model: model)
-            return view
+            TimerView(
+                model: TimerModel(selectedSec: observable.selectedSec)
+            )
         }
     }
 }

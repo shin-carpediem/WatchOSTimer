@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ProgressCircleBar: View {
-    let initial: Int
+    let total: Int
     let progress: Int
     
     var body: some View {
@@ -12,7 +12,7 @@ struct ProgressCircleBar: View {
                 .foregroundStyle(Colors.primary)
             Circle()
                 .trim(from: 0,
-                      to: CGFloat(min(Float(progress) / Float(initial),
+                      to: CGFloat(min(Float(progress) / Float(total),
                                       1)))
                 .stroke(style: .init(lineWidth: 15,
                                      lineCap: .round,
@@ -29,12 +29,12 @@ struct ProgressCircleBar: View {
 #Preview {
     VStack(spacing: 20) {
         HStack(spacing: 20) {
-            ProgressCircleBar(initial: 10, progress: 1)
-            ProgressCircleBar(initial: 10, progress: 2)
+            ProgressCircleBar(total: 10, progress: 1)
+            ProgressCircleBar(total: 10, progress: 2)
         }
         HStack(spacing: 20) {
-            ProgressCircleBar(initial: 10, progress: 5)
-            ProgressCircleBar(initial: 10, progress: 10)
+            ProgressCircleBar(total: 10, progress: 5)
+            ProgressCircleBar(total: 10, progress: 10)
         }
     }
 }
