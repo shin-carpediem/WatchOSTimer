@@ -41,7 +41,7 @@ struct TimerView: View {
         Button(action: {
             router.path.removeLast()
         }, label: {
-            Text("Finished").font(.title3).foregroundStyle(.cyan)
+            Text("Finished").font(.title3).foregroundStyle(Colors.primary)
         })
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3633DA962B45410C00C112FA /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633DA952B45410C00C112FA /* AppRouter.swift */; };
 		3633DA9C2B4ACE6700C112FA /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633DA9B2B4ACE6700C112FA /* TimerModel.swift */; };
+		3633DA9F2B4BCC4200C112FA /* ProgressCircleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633DA9E2B4BCC4200C112FA /* ProgressCircleBar.swift */; };
+		3633DAA12B4BCF8300C112FA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3633DAA02B4BCF8300C112FA /* Colors.swift */; };
 		368E707F2B444AA700E402B6 /* WatchOSTimer Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 368E707E2B444AA700E402B6 /* WatchOSTimer Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		368E70842B444AA700E402B6 /* WatchOSTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368E70832B444AA700E402B6 /* WatchOSTimerApp.swift */; };
 		368E70862B444AA700E402B6 /* SelectTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368E70852B444AA700E402B6 /* SelectTimerView.swift */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		3633DA952B45410C00C112FA /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		3633DA9B2B4ACE6700C112FA /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		3633DA9E2B4BCC4200C112FA /* ProgressCircleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleBar.swift; sourceTree = "<group>"; };
+		3633DAA02B4BCF8300C112FA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		368E70782B444AA700E402B6 /* WatchOSTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchOSTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		368E707E2B444AA700E402B6 /* WatchOSTimer Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchOSTimer Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		368E70832B444AA700E402B6 /* WatchOSTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchOSTimerApp.swift; sourceTree = "<group>"; };
@@ -111,10 +115,19 @@
 		3633DA942B450C4200C112FA /* Timer */ = {
 			isa = PBXGroup;
 			children = (
+				3633DA9D2B4BCC1900C112FA /* ViewComponents */,
 				368E70B12B444C0100E402B6 /* TimerView.swift */,
 				3633DA9B2B4ACE6700C112FA /* TimerModel.swift */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		3633DA9D2B4BCC1900C112FA /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				3633DA9E2B4BCC4200C112FA /* ProgressCircleBar.swift */,
+			);
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 		368E70712B444AA700E402B6 = {
@@ -145,6 +158,7 @@
 				3633DA942B450C4200C112FA /* Timer */,
 				368E70832B444AA700E402B6 /* WatchOSTimerApp.swift */,
 				3633DA952B45410C00C112FA /* AppRouter.swift */,
+				3633DAA02B4BCF8300C112FA /* Colors.swift */,
 				368E70872B444AA800E402B6 /* Assets.xcassets */,
 				368E70892B444AA800E402B6 /* Preview Content */,
 			);
@@ -334,8 +348,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3633DA9F2B4BCC4200C112FA /* ProgressCircleBar.swift in Sources */,
 				3633DA962B45410C00C112FA /* AppRouter.swift in Sources */,
 				368E70B22B444C0100E402B6 /* TimerView.swift in Sources */,
+				3633DAA12B4BCF8300C112FA /* Colors.swift in Sources */,
 				3633DA9C2B4ACE6700C112FA /* TimerModel.swift in Sources */,
 				368E70862B444AA700E402B6 /* SelectTimerView.swift in Sources */,
 				368E70842B444AA700E402B6 /* WatchOSTimerApp.swift in Sources */,
